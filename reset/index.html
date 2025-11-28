@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reset Password</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Outfit', sans-serif;
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+    }
+
+    html, body {
+        height: 100%;
+        overflow-x: hidden;
+        background: #f2f2f2 !important;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .reset-box {
+        width: 100%;
+        max-width: 380px;
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 35px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+        animation: fadeSlide 0.5s ease both;
+    }
+
+    @media(min-width: 1024px){
+        .reset-box {
+            max-width: 460px;
+            padding: 45px;
+        }
+    }
+
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(25px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+        display: block;
+        width: 80px;
+        margin: 0 auto 15px auto;
+        border-radius: 14px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #000;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 100%;
+        padding: 13px 14px;
+        margin-top: 4px;
+        border-radius: 14px;
+        border: 1.6px solid #cdcdcd;
+        font-size: 15px;
+        background: #fafafa;
+        transition: .2s;
+    }
+
+    input:focus {
+        border-color: #FF8AC6;
+        background: #fff;
+    }
+
+    .error {
+        font-size: 13px;
+        color: #ff2b2b;
+        margin-top: 3px;
+        margin-bottom: 8px;
+    }
+
+    .top-error {
+        color: #ff2b2b;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 15px;
+        display: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 14px;
+        background: #FF8AC6;
+        color: #fff;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: .2s;
+    }
+
+    button:active {
+        outline: 2px solid #FF8AC6 !important;
+        outline-offset: 2px;
+    }
+
+    .back {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .back a {
+        color: #FF8AC6;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 4px 6px;
+        border-radius: 10px;
+    }
+
+    .back a:active {
+        outline: 2px solid #FF8AC6 !important;
+        outline-offset: 3px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="reset-box">
+
+    <img src="https://i.imgur.com/Wc1D7dC.png" class="logo">
+
+    <h2>Reset Password</h2>
+
+    <div id="topError" class="top-error">
+        Email address not found. Please contact <b>pixelsco@gmail.com</b>.
+    </div>
+
+    <div class="input-field">
+        <label>Email Address</label>
+        <input type="email" id="email">
+        <div id="emailError" class="error"></div>
+    </div>
+
+    <button onclick="sendReset()">Send Reset Link</button>
+
+    <div class="back">
+        <a href="../index.html">Back to Login</a>
+
+</div>
+
+<script>
+function sendReset() {
+    let email = document.getElementById("email").value.trim();
+    let emailError = document.getElementById("emailError");
+    let topError = document.getElementById("topError");
+
+    emailError.textContent = "";
+    topError.style.display = "none";
+
+    if (email === "") {
+        emailError.textContent = "Please enter your email address";
+        return;
+    }
+
+    // *** ALWAYS FAIL ***
+    topError.style.display = "block";
+}
+</script>
+
+</body>
+</html>
