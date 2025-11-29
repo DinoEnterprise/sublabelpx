@@ -87,12 +87,17 @@ body { background:#000; color:#fff; min-height:100vh; overflow-x:hidden; }
 
 /* FOOTER */
 footer{text-align:center;padding:25px;font-size:14px;margin-top:40px;color:#fff;text-shadow:0 0 1px rgba(255,255,255,0.5);}
+
+/* ANIMASI MASUK */
+.fade-up { opacity:0; transform:translateY(30px); animation:fadeUpAnim 1s forwards; }
+.fade-up-delay { opacity:0; transform:translateY(30px); animation:fadeUpAnim 1s forwards; animation-delay:0.3s; }
+@keyframes fadeUpAnim { to { opacity:1; transform:translateY(0); } }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<div class="nav">
+<div class="nav fade-up">
     <div class="nav-left"><img src="https://i.imgur.com/ExJqq0w.png" class="logo"></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -110,16 +115,16 @@ footer{text-align:center;padding:25px;font-size:14px;margin-top:40px;color:#fff;
 </div>
 
 <!-- HERO -->
-<div class="hero">
-    <h1>Distribute Your Music Worldwide</h1>
-    <p>Pixels helps artists, creators, and labels release music to all major streaming platforms with ease.</p>
-    <button onclick="location.href='login'">Get Started</button>
+<div class="hero fade-up">
+    <h1 class="fade-up-delay">Distribute Your Music Worldwide</h1>
+    <p class="fade-up-delay">Pixels helps artists, creators, and labels release music to all major streaming platforms with ease.</p>
+    <button class="fade-up-delay" onclick="location.href='login'">Get Started</button>
 </div>
 
 <!-- PARTNERS -->
-<div class="partner-section">
-    <h2>Our Partners</h2>
-    <div class="partner-logos">
+<div class="partner-section fade-up">
+    <h2 class="fade-up-delay">Our Partners</h2>
+    <div class="partner-logos fade-up-delay">
         <div class="slider-track" id="sliderTrack">
             <img src="https://i.imgur.com/scW7Dns.png" alt="Partner 1">
             <img src="https://i.imgur.com/JmTeaIc.png" alt="Partner 2">
@@ -127,11 +132,11 @@ footer{text-align:center;padding:25px;font-size:14px;margin-top:40px;color:#fff;
             <img src="https://i.imgur.com/5fG16aY.png" alt="Partner 4">
         </div>
     </div>
-    <div class="logo-dots" id="sliderDots"></div>
+    <div class="logo-dots fade-up-delay" id="sliderDots"></div>
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer class="fade-up">
     © 2025 Pixels Co.
 </footer>
 
