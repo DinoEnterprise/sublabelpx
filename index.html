@@ -3,215 +3,171 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Login</title>
+<title>Pixels Co. - Music Distribution</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Outfit', sans-serif;
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Outfit",sans-serif; }
+body { background:#000; color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        /* Hilangin highlight biru */
-        -webkit-tap-highlight-color: transparent !important;
-        outline: none !important;
+/* NAVBAR */
+.nav { width:100%; padding:18px 22px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); backdrop-filter:blur(12px); box-shadow:0 2px 6px rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:1000; }
+.logo{width:48px;border-radius:12px;}
+.nav-links{display:flex;align-items:center;gap:15px;}
+.nav-links a{text-decoration:none; font-size:15px; font-weight:500; color:#fff; transition:.2s; text-shadow:0 0 1px rgba(255,255,255,0.6);}
+.nav-links a.btn-login{ color:#fff !important; border:2px solid #fff; padding:10px 18px; border-radius:14px; font-weight:600; backdrop-filter:blur(8px); background:rgba(255,255,255,0.05); box-shadow:0 0 4px rgba(255,255,255,0.5); transition:all 0.3s ease;}
+.nav-links a.btn-login:hover{ background:rgba(255,255,255,0.1); box-shadow:0 0 6px rgba(255,255,255,0.5);}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001;}
+.hamburger div{width:25px;height:3px;background:#fff;transition:all 0.4s ease;}
+.hamburger.active div:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active div:nth-child(2){opacity:0;}
+.hamburger.active div:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.overlay-menu{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:25px;position:fixed;top:-50vh;left:0;width:100%;height:50vh;background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);z-index:999;transition:top 0.4s ease-in-out;}
+.overlay-menu a{font-size:20px;font-weight:600;text-decoration:none;color:#fff;text-shadow:0 0 1px rgba(255,255,255,0.6);}
+.overlay-menu.show{top:0;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* HERO */
+.hero{padding:70px 20px;text-align:center;}
+.hero h1{font-size:38px;font-weight:700;margin-bottom:14px;color:#fff;text-shadow:0 0 2px rgba(255,255,255,0.6);}
+.hero p{font-size:17px;max-width:500px;margin:auto;margin-bottom:22px;color:#fff;text-shadow:0 0 1px rgba(255,255,255,0.5);}
+.hero button{padding:14px 26px; background:rgba(255,255,255,0.05); border:2px solid #fff; border-radius:18px; font-size:16px;font-weight:600; cursor:pointer; backdrop-filter:blur(8px); color:#fff; text-shadow:0 0 1px rgba(255,255,255,0.5); transition:all 0.3s ease; box-shadow:0 0 4px rgba(255,255,255,0.4);}
+.hero button:hover{background:rgba(255,255,255,0.1); box-shadow:0 0 6px rgba(255,255,255,0.4);}
+
+/* Hero Desktop Bigger */
+@media(min-width:768px){
+    .hero h1 { font-size:70px; }
+    .hero p { font-size:22px; max-width:800px; }
+    .hero button { padding:18px 32px; font-size:18px; }
+}
+
+/* PARTNERS SLIDER */
+.partner-section{padding:50px 20px;}
+.partner-section h2{
+    color:#fff;
+    text-shadow:0 0 2px rgba(255,255,255,0.7);
+    text-align:center;
+    font-size:60px; /* besar di desktop */
+    font-weight:800;
+    margin-bottom:30px;
+    white-space: nowrap; /* pastikan satu baris */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Responsif mobile */
+@media(max-width:768px){
+    .partner-section h2 {
+        font-size:32px; /* lebih kecil supaya muat satu baris */
     }
+}
 
-    html, body {
-        height: 100%;
-        overflow-x: hidden;
-        background: #f2f2f2 !important;
-    }
+.partner-logos{
+    position:relative;
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:12px;
+}
+.slider-track{
+    display:flex;
+    transition:transform 0.5s ease;
+}
+.slider-track img{
+    width:100%;
+    object-fit:contain;
+    flex-shrink:0;
+    filter:brightness(1.2);
+    cursor:pointer;
+}
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
+/* DOTS */
+.logo-dots{display:flex; justify-content:center; gap:8px; margin-top:12px;}
+.logo-dots span{width:10px; height:10px; border-radius:50%; background:#555; display:inline-block; transition:all 0.3s;}
+.logo-dots span.active{background:#fff;}
 
-    .login-box {
-        width: 100%;
-        max-width: 380px;
-        background: #ffffff;
-        border-radius: 22px;
-        padding: 35px;
-        box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-        animation: fadeSlide 0.5s ease both;
-    }
-
-    @media(min-width: 1024px){
-        .login-box {
-            max-width: 460px;
-            padding: 45px;
-        }
-    }
-
-    @keyframes fadeSlide {
-        from { opacity: 0; transform: translateY(25px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .logo {
-        display: block;
-        width: 80px;
-        margin: 0 auto 15px auto;
-        border-radius: 14px;
-    }
-
-    h2 {
-        text-align: center;
-        color: #000;
-        margin-bottom: 25px;
-        font-weight: 600;
-    }
-
-    .input-field {
-        width: 100%;
-        margin-bottom: 8px;
-    }
-
-    input {
-        width: 100%;
-        padding: 13px 14px;
-        margin-top: 4px;
-        border-radius: 14px;
-        border: 1.6px solid #cdcdcd;
-        font-size: 15px;
-        background: #fafafa;
-        transition: .2s;
-    }
-
-    input:focus {
-        border-color: #FF8AC6;
-        background: #fff;
-    }
-
-    .error {
-        font-size: 13px;
-        color: #ff2b2b;
-        margin-top: 3px;
-        margin-bottom: 8px;
-    }
-
-    .top-error {
-        color: #ff2b2b;
-        text-align: center;
-        font-size: 14px;
-        margin-bottom: 15px;
-        display: none;
-    }
-
-    button {
-        width: 100%;
-        padding: 13px;
-        border: none;
-        border-radius: 14px;
-        background: #FF8AC6;
-        color: #fff;
-        font-size: 16px;
-        margin-top: 10px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: .2s;
-
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* 🔥 stroke untuk tombol */
-    button:active {
-        outline: 2px solid #FF8AC6 !important;
-        outline-offset: 2px;
-    }
-
-    .reset {
-        text-align: center;
-        margin-top: 15px;
-    }
-
-    .reset a {
-        color: #FF8AC6;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        padding: 4px 6px;
-        border-radius: 10px;
-        display: inline-block;
-    }
-
-    /* 🔥 stroke untuk link reset */
-    .reset a:active {
-        outline: 2px solid #FF8AC6 !important;
-        outline-offset: 3px;
-        border-radius: 10px;
-    }
+/* FOOTER */
+footer{text-align:center;padding:25px;font-size:14px;margin-top:40px;color:#fff;text-shadow:0 0 1px rgba(255,255,255,0.5);}
 </style>
 </head>
-
 <body>
 
-<div class="login-box">
-
-    <img src="https://i.imgur.com/Wc1D7dC.png" class="logo">
-
-    <h2>Login to PX</h2>
-
-    <div id="topError" class="top-error">
-        The username and password don't match our records.
+<!-- NAV -->
+<div class="nav">
+    <div class="nav-left"><img src="https://i.imgur.com/Wc1D7dC.png" class="logo"></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html">Register</a>
+        <a href="login" class="btn-login">Login</a>
     </div>
-
-    <div class="input-field">
-        <label>Username</label>
-        <input type="email" id="email">
-        <div id="emailError" class="error"></div>
-    </div>
-
-    <div class="input-field">
-        <label>Password</label>
-        <input type="password" id="password">
-        <div id="passwordError" class="error"></div>
-    </div>
-
-    <button onclick="login()">Login</button>
-
-    <div class="reset">
-        <a href="reset">Don't remember your password?</a>
-    </div>
-
+    <div class="hamburger" onclick="toggleOverlay(this)"><div></div><div></div><div></div></div>
 </div>
 
+<!-- Overlay Menu -->
+<div class="overlay-menu" id="overlayMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html">Register</a>
+    <a href="login" class="btn-login">Login</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Distribute Your Music Worldwide</h1>
+    <p>Pixels helps artists, creators, and labels release music to all major streaming platforms with ease.</p>
+    <button onclick="location.href='login'">Get Started</button>
+</div>
+
+<!-- PARTNERS -->
+<div class="partner-section">
+    <h2>Our Partners</h2>
+    <div class="partner-logos">
+        <div class="slider-track" id="sliderTrack">
+            <img src="https://i.imgur.com/scW7Dns.png" alt="Partner 1">
+            <img src="https://i.imgur.com/JmTeaIc.png" alt="Partner 2">
+            <img src="https://i.imgur.com/G4qNAPN.png" alt="Partner 3">
+            <img src="https://i.imgur.com/5fG16aY.png" alt="Partner 4">
+        </div>
+    </div>
+    <div class="logo-dots" id="sliderDots"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 Pixels Co.
+</footer>
+
 <script>
-function login() {
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value.trim();
-
-    let emailError = document.getElementById("emailError");
-    let passwordError = document.getElementById("passwordError");
-    let topError = document.getElementById("topError");
-
-    emailError.textContent = "";
-    passwordError.textContent = "";
-    topError.style.display = "none";
-
-    let failed = false;
-
-    if (email === "") {
-        emailError.textContent = "Please enter an email address";
-        failed = true;
-    }
-
-    if (password === "") {
-        passwordError.textContent = "Password is required";
-        failed = true;
-    }
-
-    if (failed) return;
-
-    topError.style.display = "block";
+// NAV Hamburger
+function toggleOverlay(el){
+    const overlay=document.getElementById('overlayMenu');
+    overlay.classList.toggle('show');
+    el.classList.toggle('active');
 }
-</script>
 
+// AUTO SLIDER
+const track = document.getElementById('sliderTrack');
+const images = track.querySelectorAll('img');
+const dotsContainer = document.getElementById('sliderDots');
+let index = 0;
+
+// Create dots
+images.forEach((img,i)=>{
+    const dot = document.createElement('span');
+    if(i===0) dot.classList.add('active');
+    dotsContainer.appendChild(dot);
+});
+
+// Function to move slider
+function showSlide(idx){
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    dotsContainer.querySelectorAll('span').forEach(d=>d.classList.remove('active'));
+    dotsContainer.querySelectorAll('span')[idx].classList.add('active');
+}
+
+// Auto scroll every 3 seconds
+setInterval(()=>{
+    index = (index + 1) % images.length;
+    showSlide(index);
+},3000);
+</script>
 </body>
 </html>
