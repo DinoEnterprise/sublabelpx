@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dynotic Collective - Apply Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Outfit",sans-serif; }
+body { background:#000; color:#fff; min-height:100vh; }
+
+/* NAVBAR */
+.nav {
+    width:100%;
+    padding:18px 22px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    background:#000;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.logo{width:48px;border-radius:12px;}
+
+/* HERO */
+.hero{
+    padding:60px 20px;
+    text-align:center;
+}
+.hero h1{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:12px;
+    color:#fff;
+}
+.hero p{
+    font-size:18px;
+    max-width:600px;
+    margin:auto;
+    margin-bottom:30px;
+    color:#fff;
+}
+.hero p a{
+    opacity:0.9;
+    font-size:16px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    text-shadow:0 0 10px #fff, 0 0 20px #fff;
+    transition:0.3s ease;
+}
+.hero p a:hover{
+    text-shadow:0 0 15px #fff, 0 0 25px #fff;
+}
+
+/* FORM */
+.apply-form{
+    width:90%;
+    max-width:700px;
+    margin:0 auto 50px auto;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 10px rgba(255,255,255,0.2);
+}
+.apply-form label{display:block; margin-bottom:6px; font-weight:600;}
+.apply-form input,
+.apply-form select{
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:18px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.05);
+    color:#fff;
+}
+.apply-form input::placeholder{color:rgba(255,255,255,0.6);}
+.apply-form button{
+    padding:14px 28px;
+    border-radius:16px;
+    border:2px solid #fff;
+    background:rgba(255,255,255,0.05);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 0 6px rgba(255,255,255,0.3);
+}
+.apply-form button:hover{
+    background:rgba(255,255,255,0.1);
+    box-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+/* ANIMATION */
+.fade-up { opacity:0; transform:translateY(30px); animation:fadeUpAnim 1s forwards; }
+.fade-up-delay { opacity:0; transform:translateY(30px); animation:fadeUpAnim 1s forwards; animation-delay:0.3s; }
+@keyframes fadeUpAnim { to { opacity:1; transform:translateY(0); } }
+
+/* DESKTOP */
+@media (min-width: 900px) {
+    .hero { padding: 90px 20px; }
+    .hero h1 { font-size: 68px; }
+    .hero p { font-size: 24px; max-width: 800px; }
+    .apply-form { max-width: 900px; padding: 40px; }
+    .apply-form input,
+    .apply-form select { font-size: 18px; padding: 16px 18px; }
+    .apply-form button { font-size: 18px; padding: 16px 35px; }
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<div class="nav fade-up">
+    <img src="https://i.imgur.com/3quyoQo.png" class="logo">
+</div>
+
+<!-- HERO -->
+<div class="hero fade-up">
+    <h1 class="fade-up-delay">Apply Now</h1>
+    <p class="fade-up-delay">
+        Introduce Your Role to Begin.
+        <br>
+        <a href="https://www.instagram.com/dynotic.collective?igsh=bmgzcGIzNGVidDBv" target="_blank">@dynoticcollective</a>
+    </p>
+</div>
+
+<!-- FORM -->
+<div class="apply-form fade-up">
+    <form id="requestForm" action="https://formspree.io/f/xqarbjja" method="POST">
+
+        <label>Email*</label>
+        <input type="email" name="email" placeholder="Your email" required>
+
+        <label>Full Name*</label>
+        <input type="text" name="full_name" placeholder="Your full name" required>
+
+        <label>Role*</label>
+        <select name="role" required>
+            <option value="">Select your role</option>
+            <option value="Artist">Artist</option>
+            <option value="Label">Label</option>
+        </select>
+
+        <label>YouTube Link*</label>
+        <input type="url" name="youtube" placeholder="Your YouTube link" required>
+
+        <label>Instagram Link*</label>
+        <input type="url" name="instagram" placeholder="Your Instagram link" required>
+
+        <button id="submitBtn" type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+// ---- SUBMIT TANPA LIMIT ----
+const form = document.getElementById("requestForm");
+const btn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", function() {
+    btn.disabled = true;
+    btn.innerText = "Submitting...";
+
+    setTimeout(() => {
+        window.location.href = "..success/";
+    }, 800);
+});
+</script>
+
+</body>
+</html>
