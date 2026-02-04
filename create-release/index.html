@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" media="(max-width: 768px)">
+<meta name="viewport" content="width=1200, initial-scale=1.0" media="(min-width: 769px)">
+<title>Create Release | Basic Info</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Outfit",sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  min-height:100vh;
+  padding:80px 0 40px;
+}
+
+.wrap{
+  width:92%;
+  max-width:520px;
+  margin:auto;
+  background:#fff;
+  border-radius:26px;
+  padding:24px;
+  box-shadow:0 25px 45px rgba(0,0,0,.18);
+}
+
+h2{
+  font-size:20px;
+  margin-bottom:4px;
+}
+
+.sub{
+  font-size:13px;
+  color:#666;
+  margin-bottom:22px;
+}
+
+/* Cover */
+.cover-box{
+  width:100%;
+  max-width:260px;
+  height:260px;
+  margin:0 auto 22px;
+  border-radius:20px;
+  border:2px dashed #d1d5db;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.cover-box span{
+  line-height:1.6;
+}
+
+.label{
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.req{color:#ef4444}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid #ddd;
+  margin-bottom:16px;
+  font-size:14px;
+}
+
+input:focus,select:focus{
+  outline:none;
+  border-color:#667eea;
+  box-shadow:0 0 0 3px rgba(102,126,234,.15);
+}
+
+/* Artist */
+.artist-box{
+  border:1px dashed #d1d5db;
+  border-radius:16px;
+  padding:14px;
+  margin-bottom:16px;
+}
+
+.artist-box small{
+  font-size:12px;
+  color:#666;
+}
+
+.create-link{
+  display:inline-block;
+  margin-top:6px;
+  font-size:13px;
+  font-weight:600;
+  color:#667eea;
+  text-decoration:none;
+}
+
+/* Button */
+.btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  font-weight:700;
+  font-size:15px;
+  color:#fff;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.btn:active{
+  transform:scale(.97);
+}
+.plus{
+  font-size:64px;
+  font-weight:700;
+  line-height:1;
+  margin-bottom:6px;
+  color:#667eea;
+}
+
+.cover-text{
+  font-size:13px;
+  color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <h2>Basic Info</h2>
+  <div class="sub">Lengkapi informasi dasar rilisan</div>
+
+  <!-- Cover -->
+  <div class="label">Cover Art <span class="req">*</span></div>
+  <div class="cover-box">
+  <div>
+    <div class="plus">+</div>
+    <div class="cover-text">
+      Must be square between 1400 and 3200px
+    </div>
+  </div>
+</div>
+
+  <!-- Title -->
+  <div class="label">Release Title <span class="req">*</span></div>
+  <input type="text" placeholder="Title">
+
+  <!-- Artist -->
+  <div class="label">Artist <span class="req">*</span></div>
+  <div class="artist-box">
+    <input type="text" placeholder="Artist (s)">
+    <a href="/create-artist" class="create-link">+ Create New Artist</a>
+  </div>
+
+  <!-- Release Date -->
+  <div class="label">Release Date <span class="req">*</span></div>
+  <input type="date">
+  <small style="font-size:12px;color:#666;">
+    Release date must be at least 7 day from now
+  </small>
+
+  <br><br>
+
+  <button class="btn">Next</button>
+
+</div>
+
+</body>
+</html>
